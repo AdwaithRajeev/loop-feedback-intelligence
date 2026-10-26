@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { redirect } from "next/navigation";
 import FeedbackTrendChart from "@/components/FeedbackTrendChart";
 import AIQuestionAnswer from "@/components/AIQuestionAnswer";
+import LogoutButton from "@/components/LogoutButton";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
@@ -139,9 +140,10 @@ trendStart.setHours(0, 0, 0, 0);
     <main className="min-h-screen bg-slate-950 p-8 text-white">
       <div className="mx-auto max-w-7xl">
 
-        <h1 className="text-3xl font-bold">
-          LOOP Dashboard
-        </h1>
+      <div className="flex items-center justify-between gap-4">
+  <h1 className="text-3xl font-bold">LOOP Dashboard</h1>
+  <LogoutButton />
+</div>
 
         <p className="mt-2 text-slate-400">
           Welcome, {session.user.name ?? session.user.email}
